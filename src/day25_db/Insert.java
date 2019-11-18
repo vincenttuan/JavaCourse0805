@@ -24,9 +24,11 @@ public class Insert {
             rs.updateString("name", "Tom");
             
             rs.insertRow();
+            
             System.out.println("新增成功");
             
         } catch (Exception e) {
+            e.printStackTrace();
         }
         
     }
