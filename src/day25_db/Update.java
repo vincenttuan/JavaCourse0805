@@ -10,6 +10,7 @@ import javax.xml.validation.Schema;
 public class Update {
 
     public static void main(String[] args) throws Exception {
+        
         Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/MyDB", "app", "app");
         Statement stmt = conn.createStatement(
                 ResultSet.TYPE_SCROLL_SENSITIVE,

@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Select {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        //Class.forName("org.apache.derby.jdbc.ClientDriver");
         String url = "jdbc:derby://localhost:1527/MyDB";
         String user = "app";
         String password = "app";
