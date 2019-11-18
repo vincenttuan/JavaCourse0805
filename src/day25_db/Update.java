@@ -15,7 +15,7 @@ public class Update {
         Statement stmt = conn.createStatement(
                 ResultSet.TYPE_SCROLL_SENSITIVE,
                 ResultSet.CONCUR_UPDATABLE);
-        ResultSet result = stmt.executeQuery("SELECT * FROM Student Where id = 1");
+        ResultSet result = stmt.executeQuery("SELECT * FROM Student Where id = 4");
         
         if(result.last()) {
             result.updateInt("age", 99);
