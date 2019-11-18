@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.Arrays;
 
 public class CRUD {
     static Connection conn;
@@ -18,9 +19,9 @@ public class CRUD {
     }
     
     public static void main(String[] args) {
-        //insert(10, "Jack");
-        //update(3, 3, "three");
-        delete(3);
+        
+        batchInsert();
+        
     }
     
     public static void insert(int age, String name) {
@@ -68,5 +69,22 @@ public class CRUD {
         }
     }
     
+    public static void batchInsert() {
+        
+        String sql = "Insert into student(age, name) Values(?, ?)";
+        try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.clearBatch();
+            for(int i=1;i<=100;i++) {
+                pstmt.setInt(1, i);
+                pstmt.setString(2, "Jack" + i);
+                pstmt.addBatch();
+            }
+            int[] values = pstmt.executeBatch();
+            System.out.println(values.length);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 }
